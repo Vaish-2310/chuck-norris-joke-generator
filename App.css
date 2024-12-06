@@ -1,10 +1,8 @@
-
-
-/* Center the app content */
+/* General App Styling */
 .App {
   text-align: center;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  background-color: #ffeb3b;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background: linear-gradient(135deg, #ffed85, #ffaf61);
   color: #333;
   padding: 20px;
   min-height: 100vh;
@@ -14,27 +12,61 @@
   align-items: center;
 }
 
-
-/* Style for the heading */
+/* Heading Style */
 h1 {
-  font-size: 3em;
+  font-size: 3rem;
   color: #d32f2f;
   text-shadow: 2px 2px #ff5722;
+  text-transform: uppercase;
+  letter-spacing: 3px;
   margin-bottom: 20px;
 }
 
-/* Style the button with a cartoon-like feel */
+/* Speech Bubble Container */
+.joke-container {
+  position: relative;
+  max-width: 600px;
+  width: 80%;
+  margin: 20px auto;
+}
+
+.speech-bubble {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  position: relative;
+  text-align: left;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  color: #333;
+  font-style: italic;
+}
+
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 40px;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  transform: rotate(45deg);
+  box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Button Styling */
 button {
-  background-color: #ff5722;
+  background: #ff5722;
   color: #fff;
   border: none;
   padding: 15px 30px;
-  font-size: 1.2em;
-  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
   border-radius: 50px;
+  cursor: pointer;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  outline: none;
+  transition: transform 0.2s, box-shadow 0.2s ease;
 }
 
 button:hover {
@@ -44,40 +76,55 @@ button:hover {
 
 button:active {
   transform: scale(0.9);
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Style for the joke text box */
-p {
-  font-size: 1.5em;
-  font-style: italic;
-  color: #333;
-  background-color: #ffffff;
-  padding: 20px;
-  margin-top: 30px;
-  border-radius: 15px;
-  max-width: 600px;
-  border: 2px dashed #d32f2f;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+button:disabled {
+  background: #ccc;
+  color: #666;
+  cursor: not-allowed;
 }
 
-/* Add a fun background pattern */
+/* Background Animation */
 body {
-  background: radial-gradient(circle, #ffeb3b, #ffc107);
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle, #ffe082, #ffca28);
+  overflow: hidden;
 }
 
-/* Animations for loading joke */
-@keyframes joke-appear {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  animation: float 8s infinite ease-in-out;
 }
 
-p {
-  animation: joke-appear 0.5s ease-in-out;
+body::before {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  left: 10%;
+}
+
+body::after {
+  width: 300px;
+  height: 300px;
+  bottom: 15%;
+  right: 15%;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
